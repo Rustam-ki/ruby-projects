@@ -1,9 +1,9 @@
 puts "Введите основание"
-a = gets.chomp
+a = gets.to_i
 
 puts "Введите высоту"
-h = gets.chomp
+h = gets.to_i
 
-s = (a.to_i * h.to_i) / 2
+s = (a * h) / 2
 
 puts s

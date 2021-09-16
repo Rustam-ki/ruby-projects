@@ -2,11 +2,11 @@ puts "Как тебя зовут?"
 name = gets
 
 puts "Какой у тебя рост?"
-height = gets.chomp
+height = gets.to_i
 
-	weight = (height.to_i - 110)*1.15
+	weight = (height - 110) * 1.15
 
-if(weight<0)
+if(weight < 0)
 	puts "Ваш вес уже идеальный #{name}"
 end
 

@@ -1,59 +1,22 @@
 puts "Введите первую сторону треугольника"
-a = gets.chomp
+a = gets.to_i
 
 puts "Введите вторую сторону треугольника"
-b = gets.chomp
+b = gets.to_i
 
 puts "Введите третью сторону треугольника"
-c = gets.chomp
+c = gets.to_i
 
-if (a<b && b>c)
-	if(b.to_i ** 2 == a.to_i ** 2 + c.to_i ** 2)
+a, b, hypo = [a, b, c].sort
 
-		puts "Треугольник прямоугольный"
-
-	elsif(a == c)
-
-		puts "Треугольник равнобедренный"
-
-	end
-
-elsif(b<a && a>c)
-	if(a.to_i**2 == b.to_i**2 + c.to_i**2)
-
-		puts "Треугольник прямоугольный"
-
-	elsif(b == c)
-
-		puts "Треугольник равнобедренный"
-
-	end
-
-elsif(a<c && c>b)
-	if(c.to_i**2 == a.to_i**2 + b.to_i**2)
-
-		puts "Треугольник прямоугольный"
-
-	elsif(a == b)
-
-		puts "Треугольник равнобедренный"
-
-	end
-elsif(a == c && c == b)
-
+if(hypo**2 == a**2 + b**2)
+	puts "Треугольник прямоугольный"	
+elsif(a == hypo && hypo == b)
 	puts "Треугольник равносторонний"
-
-elsif(a == b && b != c)
-
+elsif(a == b && b != hypo)
 	puts "Треугольник равнобедренный"
-
-elsif(a == c && c != b)
-
+elsif(a == hypo && hypo != b)
 	puts "Треугольник равнобедренный"
-
-elsif(b == c && c != a)
-
+elsif(b == hypo && hypo != a)
 	puts "Треугольник равнобедренный"
-
-
 end
