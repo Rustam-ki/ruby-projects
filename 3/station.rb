@@ -15,11 +15,7 @@ class Station
 		self.trains.delete(train)
 	end
 
-	def by_type(type)
-		self.trains.each do |train|
-			if train.type == type
-				puts train
-			end
-		end
-	end
+  def trains_type(type)
+    self.trains.select {|train| train.type == type }
+  end
 end

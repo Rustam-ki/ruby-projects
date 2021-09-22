@@ -1,10 +1,7 @@
 class Train
-  attr_reader :number
-  attr_reader :type
-  attr_reader :route
-  attr_accessor :station
-  attr_accessor :speed
-  attr_accessor :count
+  attr_reader :number, :type, :route
+  attr_accessor :station, :speed, :count
+
 
   def initialize(number, type, count)
     @number = number
@@ -17,6 +14,10 @@ class Train
     self.speed += speed
   end
 
+  def raise_back(speed_back)
+    self.speed -= speed
+  end
+
   def stop
     self.speed = 0
   end
@@ -24,16 +25,12 @@ class Train
   def add_carriage
     if self.speed == 0
       self.count += 1
-    else
-      puts "Stop before"
     end
   end
 
   def delete_carriage
     if self.speed == 0
       self.count -= 1
-    else
-      puts "Stop before"
     end
   end
 
