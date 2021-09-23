@@ -44,7 +44,11 @@ class Train
   end
 
   def previous_station
-    self.route.stations[self.route.stations.index(self.station) - 1]
+    if(self.route.stations[self.route.stations.index(self.station) - 1])
+      self.route.stations[self.route.stations.index(self.station) - 1]
+    else 
+      nil
+    end
   end
 
   def move_next_station
