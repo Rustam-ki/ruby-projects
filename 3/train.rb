@@ -50,9 +50,15 @@ class Train
       nil
     end
   end
-
+  def move_previous_station
+    if(self.route.stations[self.route.stations.index(self.station)] != 0)
+      self.station = self.route.stations[self.route.stations.index(self.station) - 1]
+    else 
+      nil
+    end
+  end
   def move_next_station
-    if(self.station = self.route.stations[self.route.stations.index(self.station) + 1])
+    if(self.route.stations[self.route.stations.index(self.station) + 1])
       self.station = self.route.stations[self.route.stations.index(self.station) + 1]
     else
       nil 
