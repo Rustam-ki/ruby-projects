@@ -44,7 +44,7 @@ class Train
   end
 
   def previous_station
-    if(self.route.stations[self.route.stations.index(self.station) - 1])
+    if(self.route.stations[self.route.stations.index(self.station)] != 0)
       self.route.stations[self.route.stations.index(self.station) - 1]
     else 
       nil
