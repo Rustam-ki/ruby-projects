@@ -45,6 +45,7 @@ loop do
 		puts "Введите название станции?"
 		@name_st = gets.chomp
 		@name_st = Station.new(@name_st)
+		@name_st.add_train(@number)
 		puts "Создана станция #{@name_st.name}"
 
 	elsif command == 3
