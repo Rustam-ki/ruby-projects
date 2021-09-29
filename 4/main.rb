@@ -29,18 +29,18 @@ loop do
 
   if command == 1
   	puts "Введите номер поезда?"
-		@number = gets.chomp
+    @number = gets.chomp
 
-		puts "Введите тип поезда cargo или passenger"
-		type = gets.chomp
+    puts "Введите комманду 1.cargo или 2.passenger"
+    com = gets.chomp.to_i
 
-		if type == "cargo"
-			@number = CargoTrain.new(@number)
-			puts "Грузовой поезд создался #{@number}"
-		elsif type == "passenger"
-			@number = PassengerTrain.new(@number)
-			puts "Создан пассажирский поезд #{@number.number}"
-		end
+    if com == 1
+      @number = CargoTrain.new(@number)
+      puts "Грузовой поезд создался #{@number}"
+    elsif com == 2
+      @number = PassengerTrain.new(@number)
+      puts "Создан пассажирский поезд #{@number.number}"
+    end
 	elsif command == 2
 		puts "Введите название станции?"
 		@name_st = gets.chomp
@@ -95,15 +95,11 @@ loop do
 	else command == "stop"
 		break
 	end
-		
-		
 
-
-
+end
 end
 
 
-end
 
 =begin
 
