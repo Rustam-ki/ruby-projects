@@ -2,7 +2,7 @@ class Train
   attr_reader :number
   attr_accessor :station, :speed, :route
 
-
+ protected
   def initialize(number)
     @number = number
     @speed = 0
@@ -47,5 +47,5 @@ class Train
     end
   end
 
-  
+
 end

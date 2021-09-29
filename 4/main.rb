@@ -31,13 +31,13 @@ loop do
   	puts "Введите номер поезда?"
     @number = gets.chomp
 
-    puts "Введите комманду 1.cargo или 2.passenger"
-    com = gets.chomp.to_i
+    puts "Введите тип поезда cargo или passenger"
+    type = gets.chomp
 
-    if com == 1
+    if type == "cargo"
       @number = CargoTrain.new(@number)
       puts "Грузовой поезд создался #{@number}"
-    elsif com == 2
+    elsif type == "passenger"
       @number = PassengerTrain.new(@number)
       puts "Создан пассажирский поезд #{@number.number}"
     end
