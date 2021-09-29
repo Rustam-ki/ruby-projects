@@ -6,6 +6,7 @@ class Train
   def initialize(number)
     @number = number
     @speed = 0
+
   end
 
   def raise_speed(speed)
@@ -31,7 +32,7 @@ class Train
   end
 
   def move_previous_station
-    if(self.route.stations[self.route.stations.index(self.station) != 0])
+    if(self.route.stations[self.route.stations.index(self.station) - 1])
       self.station = self.route.stations[self.route.stations.index(self.station) - 1]
     else 
       nil
@@ -39,7 +40,7 @@ class Train
   end
 
   def move_next_station
-    if(self.station = self.route.stations[self.route.stations.index(self.station) + 1])
+    if(self.route.stations[self.route.stations.index(self.station) + 1])
       self.station = self.route.stations[self.route.stations.index(self.station) + 1]
     else
       nil 

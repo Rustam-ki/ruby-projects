@@ -17,5 +17,10 @@ class CargoTrain<Train
 		self.cargo_railway.delete(rail)
 	end
 
+	def router(route)
+    @route = route
+    self.station = self.route.stations.first
+  end
+
 	
 end	
