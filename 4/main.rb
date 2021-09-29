@@ -12,8 +12,8 @@ class INTERFACE
 loop do
 	puts "
 			 Введите команду:
-			 1. Создать поезд
-			 2. Создать станцию
+			 1. Создать станцию
+			 2. Создать поезд
 			 3. Создать маршрут
 			 4. Добавить станцию в маршрут
 			 5. Удалить станцию в маршрут
@@ -28,7 +28,13 @@ loop do
   command = gets.chomp.to_i
 
   if command == 1
-  	puts "Введите номер поезда?"
+  	puts "Введите название станции?"
+		@name_st = gets.chomp
+		@name_st = Station.new(@name_st)
+		
+		puts "Создана станция #{@name_st.name}"
+	elsif command == 2
+		puts "Введите номер поезда?"
     @number = gets.chomp
 
     puts "Введите тип поезда cargo или passenger"
@@ -36,17 +42,13 @@ loop do
 
     if type == "cargo"
       @number = CargoTrain.new(@number)
-      puts "Грузовой поезд создался #{@number}"
+      @name_st.add_train(@number)
+      puts "Грузовой поезд создался #{@number}, #{@trains_quant}"
     elsif type == "passenger"
       @number = PassengerTrain.new(@number)
+      @name_st.add_train(@number)
       puts "Создан пассажирский поезд #{@number.number}"
     end
-	elsif command == 2
-		puts "Введите название станции?"
-		@name_st = gets.chomp
-		@name_st = Station.new(@name_st)
-		@name_st.add_train(@number)
-		puts "Создана станция #{@name_st.name}"
 
 	elsif command == 3
 		puts "Введите название, начальную и конечную станцию маршрута"

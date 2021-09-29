@@ -1,6 +1,7 @@
 class Train
   attr_reader :number
-  attr_accessor :station, :speed, :route
+  attr_accessor :station, :speed, :route, :trains_quant
+
 
   def move_previous_station
     if(self.route.stations[self.route.stations.index(self.station) - 1])
@@ -18,12 +19,14 @@ class Train
     end
   end
 
- protected
   def initialize(number)
     @number = number
     @speed = 0
-
+    
+    
   end
+
+  
 
   def raise_speed(speed)
     self.speed += speed
