@@ -73,11 +73,11 @@ end
     @type = gets.chomp
 
     if @type == "cargo"
-      @number = CargoTrain.new(@number)
+      @number = CargoTrain.new(@number, @type)
       @name_st.add_train(@number)
       puts "Грузовой поезд создался #{@number}, #{@trains_quant}"
     elsif @type == "passenger"
-      @number = PassengerTrain.new(@number)
+      @number = PassengerTrain.new(@number, @type)
       @name_st.add_train(@number)
       puts "Создан пассажирский поезд #{@number.number}"
     end

@@ -2,21 +2,17 @@ class Train
   attr_reader :number
   attr_accessor :station, :speed, :route, :trains_quant, :railway
 
-  def initialize(number)
-    @number = number
-    @speed = 0
-    @railway = []
-  end
-
   def add_railway(rail)
-    if rail.type == "cargo" && rail.type == "passenger"
+    @railway = []
+    if rail.type == @type
       @railway << rail
     end
+    puts @railway
   end
 
   def del_railway(rail)
-    self.railway.delete(rail)
-  end
+    @railway.delete(rail)
+  end 
 
   def router(route)
     @route = route
