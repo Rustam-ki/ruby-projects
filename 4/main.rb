@@ -9,8 +9,7 @@ require_relative 'route'
 
 class INTERFACE 
 def menu 
-	loop do
-		puts "Введите команду:
+	loop do	puts "Введите команду:
 				 1. Создать станцию
 				 2. Создать поезд
 				 3. Создать маршрут
