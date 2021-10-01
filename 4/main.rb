@@ -10,8 +10,7 @@ require_relative 'route'
 class INTERFACE 
 def menu 
 	loop do
-		puts "
-				 Введите команду:
+		puts "Введите команду:
 				 1. Создать станцию
 				 2. Создать поезд
 				 3. Создать маршрут
@@ -56,12 +55,16 @@ def menu
 		end
 	end
 end
+
+	private
+
 	def create_station
   	puts "Введите название станции?"
 		@name_st = gets.chomp
 		@name_st = Station.new(@name_st)				
 		puts "Создана станция #{@name_st.name}"
 	end
+
 	def create_train
 		puts "Введите номер поезда?"
     @number = gets.chomp
@@ -79,6 +82,7 @@ end
       puts "Создан пассажирский поезд #{@number.number}"
     end
 	end
+
 	def create_route
 		puts "Введите название, начальную и конечную станцию маршрута"
 		@name_route = gets.chomp
@@ -87,22 +91,26 @@ end
 		@name_route = Route.new(start, ending)
 		puts "Создан маршрут #{@name_route}"
 	end
+
 	def add_station
 		puts "Введите название станции"
 		@new_st = gets.chomp
 		@name_route.add_st(@new_st)
 		puts "Станция добавлена"
 	end
+
 	def del_station
 		puts "Введите название станции"
 		@del_st = gets.chomp
 		@name_route.add_st(@del_st)
 		puts "Станция удалена"
 	end
+
 	def put_on_route
 		@number.router(@name_route)
 		puts "Поезд поставлен на маршрут"
 	end
+
 	def add_a_car
 		if @type == "cargo"
 			@railway_numb = CargoRailway.new
@@ -112,27 +120,31 @@ end
 			@number.add_railway(@railway_numb)
 		end
 	end
+
 	def del_a_car
 		if @type == "cargo"
 	   @number.del_railway(@railway_numb)
-		elsif type == "passenger"
+		elsif @type == "passenger"
 	   @number.del_railway(@railway_numb)
 	  end
 	end
+
 	def train_move_next
 		@number.move_next_station
 	end
+
 	def train_move_back
 		@number.move_previous_station
 	end
+
 	def list_of_stations
 		puts @name_route.stations
 	end
+
 	def list_of_trains
 		puts @name_st.trains
 	end
 end
-
 
 main = INTERFACE.new
 main.menu
