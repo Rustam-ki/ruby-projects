@@ -8,7 +8,7 @@ class Train
   end
 
   def add_railway(rail)
-      if rail.type == @type
+    if rail.type == @type
       @railway << rail
     end
     puts @railway
@@ -16,7 +16,7 @@ class Train
 
   def del_railway(rail)
     @railway.delete(rail)
-  end 
+  end
 
   def router(route)
     @route = route
@@ -24,22 +24,20 @@ class Train
   end
 
   def move_previous_station
-    if(self.route.stations[self.route.stations.index(self.station) - 1])
+    if (self.route.stations[self.route.stations.index(self.station) - 1])
       self.station = self.route.stations[self.route.stations.index(self.station) - 1]
-    else 
+    else
       nil
     end
   end
 
   def move_next_station
-    if(self.route.stations[self.route.stations.index(self.station) + 1])
+    if (self.route.stations[self.route.stations.index(self.station) + 1])
       self.station = self.route.stations[self.route.stations.index(self.station) + 1]
     else
-      nil 
+      nil
     end
   end
-
-  
 
   def raise_speed(speed)
     self.speed += speed
@@ -52,7 +50,6 @@ class Train
   def stop
     self.speed = 0
   end
-
 
   def router(route)
     @route = route

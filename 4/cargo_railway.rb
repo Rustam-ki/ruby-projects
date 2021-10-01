@@ -1,11 +1,11 @@
 class CargoRailway
 
-	attr_reader :type
+  attr_reader :type
 
-	protected
+  protected
 
-	def initialize
-		@type = "cargo"
-	end
+  def initialize
+    @type = "cargo"
+  end
 end
 

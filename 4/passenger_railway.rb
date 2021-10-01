@@ -1,10 +1,10 @@
 class PassengerRailway
-	attr_reader :type
+  attr_reader :type
 
-	protected
+  protected
 
-	def initialize
-		@type = "passenger"
-	end
+  def initialize
+    @type = "passenger"
+  end
 end
 
