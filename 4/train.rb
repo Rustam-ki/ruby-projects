@@ -1,12 +1,17 @@
 class Train
-  attr_reader :number
+  attr_reader :number, :type
   attr_accessor :station, :speed, :route, :trains_quant, :railway
 
-  def add_railway(rail)
+  def initialize(number)
+    @number = number
     @railway = []
-    if rail.type == @type
+  end
+
+  def add_railway(rail)
+      if rail.type == @type
       @railway << rail
     end
+    puts @railway
   end
 
   def del_railway(rail)
