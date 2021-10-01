@@ -7,7 +7,6 @@ class Train
     if rail.type == @type
       @railway << rail
     end
-    puts @railway
   end
 
   def del_railway(rail)
