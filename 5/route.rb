@@ -6,7 +6,22 @@ class Route
 
   def initialize(start, ending)
     register_instances
+    @start = start
+    @ending = ending
     @stations = [start, ending]
+    validate!
+  end
+
+  def validate!
+    raise "Parameter start can't be nill" if @start.nil?
+    raise "Parameter ending can't be nill" if @ending.nil?
+  end
+
+  def valid?
+    validate!
+    true
+  rescue
+    false
   end
 
   def add_st(station)

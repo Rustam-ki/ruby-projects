@@ -12,9 +12,11 @@ module InstanceCounter
   end
 
   module InstanceMethods
-    protected
+    attr_reader :instances
 
-    self.class.instances ||= 0
+    def instances
+      @instances ||=0
+    end
 
     def register_instances
       self.class.instances += 1

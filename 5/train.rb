@@ -15,6 +15,20 @@ class Train
     @number = number
     @railway = []
     @@train_list[number] = self
+    validate!
+  end
+
+  def validate!
+    raise "Number can't be nill" if @number.nil?
+    raise "Number should be at least 6 symbols" if @number.length < 3
+    raise "Number has invalid format" if @number !~ /^[а-яa-z\d]{3}-?[а-яa-z\d]{2}/
+  end
+
+  def valid?
+    validate!
+    true
+  rescue
+    false
   end
 
   def self.find(number)

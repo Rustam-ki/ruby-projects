@@ -17,6 +17,19 @@ class Station
     @name = name
     @trains = []
     @@instances += 1
+    validate!
+  end
+
+  def validate!
+    raise "Name can't be nill" if @name.nil?
+    raise "Name should be at least 6 symbols" if @name.length < 3
+  end
+
+  def valid?
+    validate!
+    true
+  rescue
+    false
   end
 
   def add_train(train)

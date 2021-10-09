@@ -87,7 +87,12 @@ class INTERFACE
       @number = PassengerTrain.new(@number)
       @name_st.add_train(@number)
       puts "Создан пассажирский поезд #{@number.number}"
+    else
+      raise 'Error try again'
     end
+  rescue RuntimeError => e
+    puts e.message
+    retry
   end
 
   def create_company_train
