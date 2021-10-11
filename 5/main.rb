@@ -12,21 +12,24 @@ class INTERFACE
   def menu
     loop do
       puts "Введите команду:
-				 1. Создать станцию
-				 2. Создать поезд
-				 3. Создать маршрут
-				 4. Добавить станцию в маршрут
-				 5. Удалить станцию в маршрут
-				 6. Назначить маршрут поезду
-				 7. Добавить вагон к поезду
-				 8. Удалить вагон поезда
-				 9. Переместить поезд вперед
-				 10. Переместить поезд назад
-				 11. Посмотреть список станций
-				 12. Посмотреть список поездов на станции
-         13. Создать компанию поезда
-         14. Создать компанию вагона
-				 stop чтобы выйти из программы"
+          1. Создать станцию
+          2. Создать поезд
+          3. Создать маршрут
+          4. Добавить станцию в маршрут
+          5. Удалить станцию в маршрут
+          6. Назначить маршрут поезду
+          7. Добавить вагон к поезду
+          8. Удалить вагон поезда
+          9. Переместить поезд вперед
+          10. Переместить поезд назад
+          11. Посмотреть список станций
+          12. Посмотреть список поездов на станции
+          13. Создать компанию поезда
+          14. Создать компанию вагона
+          15. Занять место в вагоне
+          16. Список поездов на станции
+          17. Список вагонов для поездов
+          stop чтобы выйти из программы"
       command = gets.chomp.to_i
 
       if command == 1
@@ -57,6 +60,12 @@ class INTERFACE
         create_company_train
       elsif command == 14
         create_company_wagon
+      elsif command == 15
+        take_a_seat
+      elsif command == 16
+        tr_name
+      elsif command == 17
+        all_wagons
       elsif command == "stop"
         break
       end
@@ -70,6 +79,10 @@ class INTERFACE
     @name_st = gets.chomp
     @name_st = Station.new(@name_st)
     puts "Создана станция #{@name_st.name}"
+  end
+
+  def tr_name
+    @name_st.result
   end
 
   def create_train
@@ -137,11 +150,29 @@ class INTERFACE
 
   def add_a_car
     if @type == "cargo"
-      @railway_numb = CargoRailway.new
+      puts "Введите объем грузового вагона"
+      @total_volume = gets.chomp.to_i
+      @railway_numb = CargoRailway.new(@total_volume)
       @number.add_railway(@railway_numb)
     elsif @type == "passenger"
-      @railway_numb = PassengerRailway.new
+      puts "Введите количество мест"
+      @number_of_seats = gets.chomp.to_i
+      @railway_numb = PassengerRailway.new(@number_of_seats)
       @number.add_railway(@railway_numb)
+    end
+  end
+
+  def all_wagons
+    @number.railway_each
+  end
+
+  def take_a_seat
+    if @type == "passenger"
+      @railway_numb.add_seats
+    elsif @type == "cargo"
+      puts "Введите занимаемый объем"
+      @volume = gets.chomp.to_i
+      @railway_numb.load(@volume)
     end
   end
 
@@ -151,6 +182,10 @@ class INTERFACE
     elsif @type == "passenger"
       @number.del_railway(@railway_numb)
     end
+  end
+
+  def wagon_list
+    @number.result
   end
 
   def train_move_next

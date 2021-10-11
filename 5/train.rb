@@ -11,7 +11,6 @@ class Train
   @@train_list = {}
 
   def initialize(number)
-    register_instances
     @number = number
     @railway = []
     @@train_list[number] = self
@@ -30,6 +29,26 @@ class Train
   rescue
     false
   end
+
+  def each_wagon
+    railway.each { |wagon| yield(wagon) } if block_given?
+  end
+
+  def railway_each
+    railway.each do |wagon|
+      puts "Вагон номер #{wagon.numb}, тип #{wagon.type}, занято #{wagon.occupied_volume}, свободно #{wagon.free_volume}"
+    end
+  end
+
+  def wagon_count
+    @railway.length
+  end
+
+  def result
+    puts "Поезд №#{@number} тип #{@type} вагонов #{wagon_count}"
+  end
+
+
 
   def self.find(number)
     if @@train_list[number].nil?

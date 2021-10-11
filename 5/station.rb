@@ -13,7 +13,6 @@ class Station
   end
 
   def initialize(name)
-    register_instances
     @name = name
     @trains = []
     @@instances += 1
@@ -30,6 +29,16 @@ class Station
     true
   rescue
     false
+  end
+
+  def each_train
+    trains.each { |train| yield(train) } if block_given?
+  end
+
+  def result
+    trains.each do |train|
+      puts "Поезд #{train.number}, тип #{train.type}, количество вагонов #{train.wagon_count}"
+    end
   end
 
   def add_train(train)
