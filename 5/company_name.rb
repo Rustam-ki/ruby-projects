@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
 module CompanyName
   attr_accessor :company
-  def company(company_name)
-    @company = company_name
+
+  def company(company)
+    @company = company
   end
 end

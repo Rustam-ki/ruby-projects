@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PassengerRailway
   attr_reader :type, :number_of_seats
 
@@ -5,7 +7,7 @@ class PassengerRailway
     raise StandardError, 'Количество мест должно быть больше нуля' if number_of_seats <= 0
 
     @number_of_seats = number_of_seats
-    @type = "passenger"
+    @type = 'passenger'
     @numb = numb
     @seats = []
   end
@@ -22,6 +24,7 @@ class PassengerRailway
 
   def leave_seat
     raise StandardError, 'Все места свободны' if free_seats == number_of_seats
+
     @seats.pop
   end
 
@@ -33,4 +36,3 @@ class PassengerRailway
     "Занято #{seats_length} мест, свободно #{free_seats}"
   end
 end
-

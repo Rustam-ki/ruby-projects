@@ -1,12 +1,11 @@
+# frozen_string_literal: true
+
 require_relative 'instance_counter'
 
 class Station
   include InstanceCounter
 
-  attr_reader :name
-  attr_reader :trains
-
-  @@instances = 0
+  attr_reader :name, :trains
 
   def self.all
     @@instances
@@ -21,18 +20,18 @@ class Station
 
   def validate!
     raise "Name can't be nill" if @name.nil?
-    raise "Name should be at least 6 symbols" if @name.length < 3
+    raise 'Name should be at least 6 symbols' if @name.length < 3
   end
 
   def valid?
     validate!
     true
-  rescue
+  rescue StandardError
     false
   end
 
-  def each_train
-    trains.each { |train| yield(train) } if block_given?
+  def each_train(&block)
+    trains.each(&block) if block_given?
   end
 
   def result
@@ -42,14 +41,14 @@ class Station
   end
 
   def add_train(train)
-    self.trains << train
+    trains << train
   end
 
   def del_rain(train)
-    self.trains.delete(train)
+    trains.delete(train)
   end
 
   def trains_type(type)
-    self.trains.select { |train| train.type == type }
+    trains.select { |train| train.type == type }
   end
 end

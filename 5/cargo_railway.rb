@@ -1,9 +1,10 @@
-class CargoRailway
+# frozen_string_literal: true
 
+class CargoRailway
   attr_reader :type, :total_volume, :numb
 
   def initialize(total_volume, numb = rand(100))
-    @type = "cargo"
+    @type = 'cargo'
     @total_volume = total_volume
     @numb = numb
     @volume = 0
@@ -33,4 +34,3 @@ class CargoRailway
     "Вагон №#{@numb}, тип #{@type} загружено #{occupied_volume}, свободно #{free_volume}"
   end
 end
-
