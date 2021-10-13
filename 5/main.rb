@@ -9,7 +9,7 @@ require_relative 'cargo_railway'
 require_relative 'route'
 require_relative 'company_name'
 
-class INTERFACE
+class Interface
   def menu
     loop do
       puts "Введите команду:
@@ -211,5 +211,5 @@ class INTERFACE
   end
 end
 
-main = INTERFACE.new
+main = Interface.new
 main.menu
