@@ -1,15 +1,17 @@
-class Route 
-	attr_reader :stations
+# frozen_string_literal: true
 
-	def initialaize(start, end)
-		@stations = [start, end]
-	end
+class Route
+  attr_reader :stations
 
-	def add_st(station)
-		@stations.insert(-2, station)
-	end
+  def initialaize(start, ending)
+    @stations = [start, ending]
+  end
 
-	def del_st(station)
-		@stations.delete(station)
-	end
+  def add_st(station)
+    @stations.insert(-2, station)
+  end
+
+  def del_st(station)
+    @stations.delete(station)
+  end
 end

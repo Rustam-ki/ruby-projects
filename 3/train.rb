@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 class Train
   attr_reader :number, :type, :route
   attr_accessor :station, :speed, :count
-
 
   def initialize(number, type, count)
     @number = number
@@ -14,7 +15,7 @@ class Train
     self.speed += speed
   end
 
-  def raise_back(speed_back)
+  def raise_back(_speed_back)
     self.speed -= speed
   end
 
@@ -23,15 +24,11 @@ class Train
   end
 
   def add_carriage
-    if self.speed == 0
-      self.count += 1
-    end
+    self.count += 1 if self.speed.zero?
   end
 
   def delete_carriage
-    if self.speed == 0
-      self.count -= 1
-    end
+    self.count -= 1 if self.speed.zero?
   end
 
   def route=(route)
@@ -40,28 +37,22 @@ class Train
   end
 
   def next_station
-    self.route.stations[self.route.stations.index(self.station) + 1]
+    route.stations[route.stations.index(station) + 1]
   end
 
   def previous_station
-    if(self.route.stations[self.route.stations.index(self.station)] != 0)
-      self.route.stations[self.route.stations.index(self.station) - 1]
-    else 
-      nil
-    end
+    route.stations[route.stations.index(station) - 1] if route.stations[route.stations.index(station)] != 0
   end
+
   def move_previous_station
-    if(self.route.stations[self.route.stations.index(self.station)] != 0)
-      self.station = self.route.stations[self.route.stations.index(self.station) - 1]
-    else 
-      nil
+    if route.stations[route.stations.index(station)] != 0
+      self.station = route.stations[route.stations.index(station) - 1]
     end
   end
+
   def move_next_station
-    if(self.route.stations[self.route.stations.index(self.station) + 1])
-      self.station = self.route.stations[self.route.stations.index(self.station) + 1]
-    else
-      nil 
+    if route.stations[route.stations.index(station) + 1]
+      self.station = route.stations[route.stations.index(station) + 1]
     end
   end
 end
