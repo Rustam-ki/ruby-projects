@@ -73,15 +73,11 @@ class Train
   end
 
   def move_previous_station
-    if route.stations[route.stations.index(station) - 1]
-      self.station = route.stations[route.stations.index(station) - 1]
-    end
+    self.station = route.stations[route.stations.index(station) - 1] if route.stations[route.stations.index(station) - 1]
   end
 
   def move_next_station
-    if route.stations[route.stations.index(station) + 1]
-      self.station = route.stations[route.stations.index(station) + 1]
-    end
+    self.station = route.stations[route.stations.index(station) + 1] if route.stations[route.stations.index(station) + 1]
   end
 
   def raise_speed(speed)
